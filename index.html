@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="KYROS">
@@ -6332,6 +6332,21 @@ skin();syncNeed();$("#fab").style.display="none";draw();onb();wrSched();
 #scanHost,#scanHost.fs.emb{bottom:calc(var(--tbh) + 10px)}
 #scanHost.b3d,#scanHost.fs:not(.emb){bottom:0}
 html.kbd #scanHost{bottom:var(--kb,0px)}
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}
+/* Calendrier : numéros centrés sous L M M J V S D (au lieu de coller au bord gauche) */
+.mn{align-self:center}
+/* Très petits écrans (iPhone SE / mini) : le titre ne touche plus les flèches */
+.ah h1{min-width:0}
+.ah .row{flex:none}
+@media (max-width:350px){.ah h1{font-size:19px}}
 </style>
+<script id="no-zoom">
+/* Zoom navigateur désactivé (pincement ; le double-tap est bloqué en CSS). Le zoom interne du scan 3D n'est pas touché. */
+(function(){
+  var d=document,o={passive:false};
+  ["gesturestart","gesturechange","gestureend"].forEach(function(t){d.addEventListener(t,function(e){e.preventDefault()},o)});
+  d.addEventListener("touchmove",function(e){if(e.touches&&e.touches.length>1&&e.scale!==undefined&&e.scale!==1&&!(e.target.closest&&e.target.closest("canvas")))e.preventDefault()},o);
+})();
+</script>
 </body>
 </html>
