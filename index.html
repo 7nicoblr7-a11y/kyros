@@ -6321,5 +6321,17 @@ addEventListener("touchend",e=>{const a=deep();if(!isF(a))return;const c=e.chang
 $("#fab").onclick=addFood;
 skin();syncNeed();$("#fab").style.display="none";draw();onb();wrSched();
 </script>
+<style id="nav-bas">
+/* === Barre de navigation + sélecteur de vues plus bas (iPhone) ===
+   Ajuste --nav-gap pour monter/descendre : plus petit = plus bas. */
+:root{--nav-gap:calc(6px + env(safe-area-inset-bottom,0px)*.35);--tbh:calc(58px + var(--nav-gap));--tbh-g:calc(58px + var(--nav-gap))}
+.bar-w{padding-bottom:var(--nav-gap)}
+.swt{bottom:calc(var(--tbh) + 16px)}
+.fab{bottom:calc(var(--tbh) + 18px)}
+.undo{bottom:calc(var(--tbh) + 76px)}
+#scanHost,#scanHost.fs.emb{bottom:calc(var(--tbh) + 10px)}
+#scanHost.b3d,#scanHost.fs:not(.emb){bottom:0}
+html.kbd #scanHost{bottom:var(--kb,0px)}
+</style>
 </body>
 </html>
